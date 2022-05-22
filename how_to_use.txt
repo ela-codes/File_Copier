@@ -1,0 +1,30 @@
+#1 Input: .txt file with copying parameters
+
+#2 Copying parameters:
+	- Ask user for source file to copy (source)
+	- Ask user where to make the new folder (destination)
+	- Ask user for naming convention for corresponding new folder/file name (create)
+
+#3 The resulting folder(s) would copy the .vca file and do the following:
+	- Create a new folder with the user input's file naming convention
+	- Update the .vca file name with the user input
+
+#4 Loops over x amount of times for each copy
+
+
+**** update_vca.py will need to be used to update video file paths inside .vca file ****
+
+
+Observations:
+if random destination is inputted, this makes a copy of the original file and renames it as that. Additionally, it saves it to the folder containing the .py file
+
+
+
+~~~~~~ SAMPLE INPUT ~~~~~~ 
+
+
+source = /home/operator/Documents/Folder_Testing/Fredericksburg_Rd_and_Huebner_Rd_NW2_Apr19_Tue_B1/Fredericksburg_Rd_and_Huebner_Rd_NW2_Apr19_Tue_B1.vca
+
+destination=/home/operator/Documents/Folder_Testing/
+
+create =Fredericksburg_Rd_and_Huebner_Rd_NW2_Apr19_Tue_B2,  Fredericksburg_Rd_and_Huebner_Rd_NW2_Apr19_Tue_B3

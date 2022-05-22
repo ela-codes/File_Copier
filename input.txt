@@ -1,0 +1,7 @@
+source = /home/operator/Documents/Folder_Testing/Fredericksburg_Rd_and_Huebner_Rd_NW2_Apr19_Tue_B1/Fredericksburg_Rd_and_Huebner_Rd_NW2_Apr19_Tue_B1.vca
+
+destination=/home/operator/Documents/Folder_Testing/
+
+
+create =Fredericksburg_Rd_and_Huebner_Rd_NW2_Apr19_Tue_B2,  Fredericksburg_Rd_and_Huebner_Rd_NW2_Apr19_Tue_B3
+
