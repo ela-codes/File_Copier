@@ -1,4 +1,5 @@
 # Created by Aena Teodocio. May 22, 2022.
+# Last Updated - June 16, 2022.
 
 # Imports
 import os
@@ -30,8 +31,9 @@ def open_file(file):
     assert 'destination=' in input_lines, 'Missing destination path. Could not find "destination= path_to_file_or_directory".'
     assert 'create=' in input_lines, 'Missing names for new folder & file to create. Could not find "create= filename1, filename2..."'
 
-    # Pass on input_lines since there parameters are complete
+    # once parameters are verified to be complete
     input_lines = input_lines.splitlines()
+    input_file.close()
     return input_lines
 
 
@@ -82,14 +84,21 @@ def file_copier(input_file):
 
     create_file_names = file_dict['create'].split(',')
 
+    # Find index for the beginning of source file batch name
+    idx = file_dict['source']
+    idx = idx.rfind('/') + 1
+
+    source_vca_name = file_dict['source'][idx:-4]
+
+    # Make copy, create new folder, and update the project name in the vca file
     for name in create_file_names:
         new_folder_path = file_dict['destination'] + name
-
         create_dir(new_folder_path)
 
         try:
-            new_file_name = os.path.join(file_dict['destination'], name, name + '.vca')
-            shutil.copy(file_dict['source'], new_file_name)
+            new_file = os.path.join(file_dict['destination'], name, name + '.vca')
+            shutil.copy(file_dict['source'], new_file)
+            update_project_name(source_vca_name, new_file, name)
             print('File has been copied.')
         except shutil.SameFileError:
             print('Source and destination are the same file.')
@@ -98,6 +107,23 @@ def file_copier(input_file):
         except shutil.Error as e:
             print('An error occurred.')
             print(e)
+
+
+def update_project_name(source_vca_name, new_file, new_name):
+    """
+    Updates the file naming convention to the new name specified by user.
+
+    source_vca_name (str): source file name
+    new_file (str): a copy of the source file in a new directory
+    new_name (str): the file name that will be used to replace the naming convention of new_file
+    """
+    curr_vca = open(new_file, 'r')
+    vca_lines = curr_vca.read().replace(source_vca_name, new_name)
+    curr_vca.close()
+
+    curr_vca = open(new_file, 'w')
+    curr_vca.write(vca_lines)
+    curr_vca.close()
 
 
 if __name__ == '__main__':
