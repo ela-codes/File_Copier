@@ -111,7 +111,7 @@ def file_copier(input_file):
 
 def update_project_name(source_vca_name, new_file, new_name):
     """
-    Updates the file naming convention to the new name specified by user.
+    Updates the file naming convention of the newly created file using a new file name specified by user.
 
     source_vca_name (str): source file name
     new_file (str): a copy of the source file in a new directory
